@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dragonfly-agent
+  namespace: default
+  labels:
+    app:  dragonfly-agent
+spec:
+  selector:
+    matchLabels:
+      app:  dragonfly-agent
+  template:
+    metadata:
+      labels:
+        app:  dragonfly-agent
+    spec:
+      hostNetwork: true
+      containers:
+      - name:  dragonfly-agent
+        image: registry.cn-zhangjiakou.aliyuncs.com/ringtail/dfclient:1.0.0-tuning
